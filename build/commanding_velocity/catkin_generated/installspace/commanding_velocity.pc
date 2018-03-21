@@ -1,0 +1,8 @@
+prefix=/home/user/Desktop/assignment_13487582/install
+
+Name: commanding_velocity
+Description: Description of commanding_velocity
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/user/Desktop/assignment_13487582/install/lib 
+Requires: 
