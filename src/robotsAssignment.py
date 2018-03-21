@@ -175,11 +175,12 @@ class robotsAssignment:
             self.twist.angular.z = -float(err) / 100
             self.publish.publish(self.twist)
              
+	    # If the distance from the center object is less than 1.5 then stop the bot
             if distance <= 1.5:
                 self.twist.linear.x = 0
                 self.publish.publish(self.twist)
-		# If the amount of pixels in the current mask = true and that colour hasn't been found then mark
-		# it off and print it to the console
+		# If the amount of pixels in the current mask = greater than fifty
+		# and that colour hasn't been found then mark it off and print it to the console
                 if(cv2.inRange(hsvImage, lower_red, upper_red).sum() > 50 and self.redFound != True):
                     self.bigMask -= redMask
                     self.redFound = True 
@@ -213,6 +214,7 @@ class robotsAssignment:
         if(self.redFound == True and self.blueFound == True and self.yellowFound == True and self.greenFound == True):
             self.complete = True
         return self.complete
+
 def main():
     rospy.init_node('robotsAssignment', anonymous=True)
     object = robotsAssignment()
